@@ -6,9 +6,13 @@ Rails.application.routes.draw do
  
   root 'welcome#index'
 
-  resources :feeds 
-    
+  resources :feeds do
+    get 'bookmarks', on: :collection
+  end 
 end
+
+    
+    
       
     
  

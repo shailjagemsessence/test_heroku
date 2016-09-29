@@ -12,19 +12,22 @@ class FeedsController < ApplicationController
   end
 
   def show
-
+    # binding.pry
+    @feed = current_user.feeds.find(params[:id])
   end
 
+
   def create
-    # binding.pry
     @feed = current_user.feeds.build(feed_params)
     if @feed.save!
-      
       redirect_to @feed
-    
     else
       render :new
     end
+  end
+
+  def bookmarks
+    @feeds = current_user.feeds
   end
 
 private
