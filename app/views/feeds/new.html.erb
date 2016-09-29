@@ -1,0 +1,17 @@
+<h2> main page</h2>
+<%= form_for @feed  do |f| %> 
+  <p><%= f.file_field :image %></p>
+  <p><%= f.text_area :body, size: "10x10" %></p>
+  <p><%= select_tag :permission, options_for_select(Feed.permissions)%></p>
+  <p><%= f.submit "Create" %></p>
+  
+<% end %>
+  
+
+  
+<p>
+  <%= link_to 'Back', feeds_path %>
+</p>
+
+
+  
