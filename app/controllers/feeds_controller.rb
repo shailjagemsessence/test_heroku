@@ -1,11 +1,10 @@
 class FeedsController < ApplicationController
+  before_filter :authenticate_user!
 
   def index
-
+    
   end 
 
-
-  
   def new
     # binding.pry
     @feed = Feed.new
@@ -15,7 +14,6 @@ class FeedsController < ApplicationController
     # binding.pry
     @feed = current_user.feeds.find(params[:id])
   end
-
 
   def create
     @feed = current_user.feeds.build(feed_params)
@@ -27,15 +25,16 @@ class FeedsController < ApplicationController
   end
 
   def bookmarks
-    @feeds = current_user.feeds
+    @feeds = current_user.feeds.all
   end
-
+  
 private
+
   def feed_params
     params.require(:feed).permit(:body, :image, :permission, :user_id)
   end
-    
 end
+    
     
   
   

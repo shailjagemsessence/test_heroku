@@ -1,15 +1,29 @@
-<h2> main page</h2>
-<%= form_for @feed  do |f| %> 
-  <p><%= f.file_field :image %></p>
-  <p><%= f.text_area :body, size: "10x10" %></p>
-  <p><%= select_tag :permission, options_for_select(Feed.permissions)%></p>
-  <p><%= f.submit "Create" %></p>
+<h2> feed page</h2>
+<table>
+  <%= form_for @feed  do |f| %> 
+  <th> select image </th>
+  <td><p><%= f.file_field :image %></p> </td>
+  <th> image </th>
+  <td><%= image_tag @feed.image_url unless @feed.image.blank? %> </td>
+  <th> post </th> 
+  <td><p><%= f.text_area :body, size: "10x10" %></p></td>
+  <th> select </th>
+  <td><p><%= select_tag :permission, options_for_select(Feed.permissions)%></p></td>
+  <th>bookmark</th>
+  <td><p><%= f.submit "bookmark" %></p></td>
+</table>  
   
+
+  <%= link_to 'show', feed_path(f) %>
 <% end %>
+
+  
   
 <p>
   <%= link_to 'Back', feeds_path %>
 </p>
+
+
 
   
 
