@@ -10,9 +10,3 @@ Rails.application.routes.draw do
     get 'bookmarks', on: :collection
   end 
 end
-
-    
-    
-      
-    
- 
