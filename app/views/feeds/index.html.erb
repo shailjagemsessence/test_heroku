@@ -1,26 +1,19 @@
-<h1> all post </h1>
-<%= link_to 'feed', new_feed_path %>
-<table>
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>post</th>
-    </tr>
-  </thead>
-  <tbody>
-  <%@feeds.each do |feed| %>
-    <tr>
-      <td><%= image_tag feed.image_url() unless feed.image.blank? %></td>
-      <td><%= feed.body %></td>
-    </tr>
-  <% end %>
-</table>
-    
-
-      
-    
- 
-
-
-
-
+<%#= link_to 'feed', new_feed_path %>
+<div class="container">
+  <h1> all feeds </h1>
+  <div class="row col-sm-12" >
+    <div class="col-sm-3"><h2>image</h2></div>
+    <div class="col-sm-3"><h2>post</h2></div> 
+    <div class="col-sm-3"><h2>permission</h2></div>
+    <div class="col-sm-3"><h2>bookmarks</h2></div>
+  </div>     
+  <div class="row col-sm-12"> 
+    <%@feeds.each do |feed| %>
+      <div class="col-sm-3"><%= image_tag feed.image_url() unless feed.image.blank? %></div>
+      <div class="col-sm-3"><%= feed.body %></div>
+      <div class="col-sm-3"><%= feed.permission %></div>
+      <div class="col-sm-3"><%#= feed.check_box :bookmark %></div>
+    <%end%>
+  </div>
+</div>
+        

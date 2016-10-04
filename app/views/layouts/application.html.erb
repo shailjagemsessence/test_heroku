@@ -11,24 +11,28 @@
   <body>
     <ul class="nav nav-pills">
       <li role="presentation" class="active"><%= link_to 'project' %> </li>
-      <li role="presentation" class="dropdown"><%= link_to 'feed', new_feed_path %> </li>
-      
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup ="true" aria-expanded="false">Feed<span class="caret"></span></a>
+        <ul class="dropdown-menu" >
+          <li><%= link_to 'Feed new', new_feed_path %></li>
+          <li><%= link_to 'Feed all', feeds_path %></li>
+        </ul>
+      </li>
       <li role="presentation"><%= link_to 'Bookmark', new_feed_path %></li>
       <li role="presentation"><%= link_to 'profile', new_feed_path %></li>
       <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
           Logged in as <strong><%= current_user.email %></strong>.
           <li role="presentation"><%= link_to 'Edit profile', edit_user_registration_path %></li> 
+      
           <li role="presentation"><%= link_to "Logout", destroy_user_session_path, method: :delete   %> </li>
         <% else %>
           <li role="presentation"><%= link_to "Sign up", new_user_registration_path %></li> 
     
           <li role="presentation"><%= link_to "Login", new_user_session_path%></li>
         <% end %>
-       </ul>
-
+      </ul>
     </ul>
-
 
   <div class="container">
     <div class="row">
@@ -43,6 +47,10 @@
         <%= yield %>
   </body>
 </html>
+
+
+
+
 
 
     

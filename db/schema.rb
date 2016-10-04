@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927130547) do
+ActiveRecord::Schema.define(version: 20161004142312) do
 
   create_table "feeds", force: :cascade do |t|
     t.binary   "image"
     t.text     "body"
     t.integer  "user_id"
-    t.string   "permission"
+    t.integer  "permission"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "bookmark"
   end
 
   create_table "users", force: :cascade do |t|

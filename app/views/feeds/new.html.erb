@@ -1,5 +1,5 @@
-<h2> feed page</h2>
 <div class="container">
+  <h2> feed page</h2>
   <div class="table-responsive">
   <%= form_for @feed  do |f| %> 
     <table class="table">
@@ -8,36 +8,34 @@
           <th>select image </th>
           <th>post</th>
           <th>select</th>
-          <th>show image</th>
           <th>image</th>
+          <th>submit</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p><%= f.file_field :image, class: 'photo_upload'%></p> </td>
+          <td><p><%= f.file_field :image %></p> </td>
           <td><p><%= f.text_area :body, size: "10x5" %></p></td>
-          <td><p><%= select_tag :permission, options_for_select(Feed.permissions)%></p></td>
-          <td><p><%= f.submit "post image" %></p></td>
-          <td><%= image_tag 'avatar.jpg' , class: 'image_preview' %></td>
+          <td><p><%= f.select :permission, Feed.permissions.map {|k,v| [k,k]} %></p></td>
+          <td><img id="image_preveiw" src=""/></td>
+          <td><p><%= f.submit :submit %></p></td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-    <%= link_to 'show', feed_path(f) %>
-    <%= link_to 'index', feeds_path()%>
-
 <% end %>
+          
+          
+          
+          
 
+ 
 
- <%#= image_tag 'avatar.png', class: 'hidden image_to_upload' %>
-<br/><br/>
 
   
-  
 
 
-  
   
 
 

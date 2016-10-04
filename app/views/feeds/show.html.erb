@@ -1,10 +1,13 @@
 <h1>this is show</h1>
 
 <strong> image </strong>
-<%= image_tag @feed.image_url() unless @feed.image.blank? %> 
+   <%= image_tag @feed.image_url() unless @feed.image.blank? %> 
 
 <strong> body </strong>
-<%= @feed.body %>
+  <%= @feed.body %>
+
+ <strong> permission </strong>
+  <%= @feed.permission %>
  
 <p>
   <%= link_to 'Back', feeds_path %>
