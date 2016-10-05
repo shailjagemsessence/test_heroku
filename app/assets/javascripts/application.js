@@ -17,8 +17,9 @@
 //= require_tree .
 
 
+
 function readURL(input) {
-  debugger
+  // debugger
   if (input.files && input.files[0]) {
       var reader = new FileReader();
           
@@ -34,4 +35,3 @@ function readURL(input) {
 $(document).on('change', '#feed_image', function() {
   readURL(this);
 }); 
-

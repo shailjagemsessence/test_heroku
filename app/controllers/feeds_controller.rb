@@ -1,7 +1,7 @@
 class FeedsController < ApplicationController
   before_filter :authenticate_user!
   def index
-    @feeds = Feed.by_permission.order(:updated_at)
+    @feeds = Feed.by_permission
   end 
     
   def new
@@ -26,6 +26,7 @@ class FeedsController < ApplicationController
   end
 
   def bookmarks
+    flash[:notice] = "All bookmark feeds"
     @feeds = current_user.feeds.bookmark_records
   end
   
@@ -33,8 +34,8 @@ private
   def feed_params
     params.require(:feed).permit(:body, :image, :permission, :user_id, :bookmark)
   end
-
 end
+
 
 
      
