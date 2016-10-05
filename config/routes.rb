@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :feeds do
     get 'bookmarks', on: :collection
+    put 'bookmark_the_feed', on: :member
   end 
 end

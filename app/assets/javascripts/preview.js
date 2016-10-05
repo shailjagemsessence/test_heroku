@@ -1,28 +1,35 @@
-// var ready_post;
+function readURL(input) {
+  
+  if (input.files && input.files[0]) {
+      var reader = new FileReader();
+          
+  reader.onload = function (e) {
+    $('#image_preveiw').attr('src', e.target.result);
 
-// ready_post = function() {
-//   var readURL;
-//   $('.photo-upload').on('change', function(e) {
-//     return readURL(this);
-//   });
-//   readURL = function(input) {
-//     var reader;
-//     if (input.files && input.files[0]) {
-//       return reader = new FileReader();
-//     }
-//   };
-//   reader.onload = function(e) {
-//     var $swap;
-//     $('.image_to_upload').attr('src', e.target.result).removeClass('hidden');
-//     $swap = $('.swap');
-//     if ($swap) {
-//       return $swap.removeClass('hidden');
-//     }
-//   };
-//   return reader.readAsDataURL(input.files[0]);
-// };
+    }
+      
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+   
+$(document).on('change', '#feed_image', function() {
+  readURL(this);
+}); 
 
-// $(document).ready(ready_post);
 
-// $(document).on('page:load', ready_post);
+$(document).on('click', '#bookmark_checkbox', function() {
+  debugger;
+    var $this = $(this),
+    feed_id = $this.closest("div").attr("id");
+    $.ajax({
+    url: '/feeds/'+feed_id+'/bookmark_the_feed/',
+    type: 'put'
+  });
+});
 
+
+  
+
+  
+    
+  

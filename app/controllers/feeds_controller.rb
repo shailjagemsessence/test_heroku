@@ -29,6 +29,14 @@ class FeedsController < ApplicationController
     flash[:notice] = "All bookmark feeds"
     @feeds = current_user.feeds.bookmark_records
   end
+
+  def bookmark_the_feed
+    
+    @feed = Feed.find(params[:id])
+    @feed.update_attributes(bookmark: params[:bookmark])
+  end
+    
+
   
 private
   def feed_params
