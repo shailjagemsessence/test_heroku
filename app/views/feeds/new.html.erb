@@ -9,6 +9,7 @@
           <th>post</th>
           <th>select</th>
           <th>image</th>
+          <th>bookmark</th>
           <th>submit</th>
         </tr>
       </thead>
@@ -17,7 +18,8 @@
           <td><p><%= f.file_field :image %></p> </td>
           <td><p><%= f.text_area :body, size: "10x5" %></p></td>
           <td><p><%= f.select :permission, Feed.permissions.map {|k,v| [k,k]} %></p></td>
-          <td><img id="image_preveiw" src=""/></td>
+          <td><img id="image_preveiw" src="" style="width:108px;height:100px;"></td>
+          <td><p><%= f.check_box :bookmark %></p></td>
           <td><p><%= f.submit :submit %></p></td>
         </tr>
       </tbody>
@@ -26,11 +28,6 @@
 </div>
 <% end %>
           
-          
-          
-          
-
- 
 
 
   
