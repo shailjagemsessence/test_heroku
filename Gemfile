@@ -29,7 +29,6 @@ gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'devise'
 gem 'pry'
 
-gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.2'
   # Use CoffeeScript for .coffee assets and views
 gem 'uglifier', '>= 1.3.0'
@@ -37,6 +36,7 @@ gem 'uglifier', '>= 1.3.0'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
+gem 'will_paginate', '~> 3.1.0'
 
 
 group :development, :test do

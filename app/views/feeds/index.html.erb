@@ -1,5 +1,5 @@
-<%#= link_to 'feed', new_feed_path %>
 <div class="container">
+
   <h1> all feeds </h1>
   <div class="row" >
     <div class="col-sm-3"><h2>image</h2></div>
@@ -12,9 +12,9 @@
       <div class="col-sm-3"><%= image_tag feed.image_url(),class: "img" unless feed.image.blank? %></div>
       <div class="col-sm-3"><%= feed.body %></div>
       <div class="col-sm-3"><%= feed.permission %></div>
-      <div class="col-sm-3" id="<%= feed.id %>"><%= check_box_tag 'bookmark', feed.bookmark, feed.bookmark, id: "bookmark_checkbox" %></div>
+      <div class="col-sm-3" id="<%= feed.id %>"><%= check_box_tag 'bookmark', feed.bookmark,feed.bookmark,  id: "bookmark_checkbox" %></div>
+    </div>
 
-      </div>
   <%end%>
 </div>
   

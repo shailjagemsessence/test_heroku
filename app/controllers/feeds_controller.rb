@@ -3,7 +3,7 @@ class FeedsController < ApplicationController
   def index
     @feeds = Feed.by_permission
   end 
-    
+  
   def new
     # binding.pry
     @feed = Feed.new
@@ -26,23 +26,32 @@ class FeedsController < ApplicationController
   end
 
   def bookmarks
-    flash[:notice] = "All bookmark feeds"
-    @feeds = current_user.feeds.bookmark_records
+    @feeds = Feed.bookmark_records.paginate(:page => params[:page], :per_page => 10)
   end
-
-  def bookmark_the_feed
     
+  def bookmark_the_feed
     @feed = Feed.find(params[:id])
     @feed.update_attributes(bookmark: params[:bookmark])
+    respond_to do |format|
+      format.html { redirect_to feeds_url }
+    end
   end
-    
-
-  
 private
   def feed_params
     params.require(:feed).permit(:body, :image, :permission, :user_id, :bookmark)
   end
 end
+    
+
+
+      
+    
+      
+    
+    
+    
+
+  
 
 
 
