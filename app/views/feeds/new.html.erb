@@ -1,44 +1,49 @@
 <div class="container">
-  <h2> feed page</h2>
-  <div class="table-responsive">
-  <%= form_for @feed  do |f| %> 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>select image </th>
-          <th>post</th>
-          <th>select</th>
-          <th>image</th>
-          <th>submit</th>
-        </tr>
-      </thead>
-          
-      <tbody>
-        <tr>
-          <td><p><%= f.file_field :image %></p> </td>
-          <td><p><%= f.text_area :body, size: "10x5" %></p></td>
-          <td><p><%= f.select :permission, Feed.permissions.map {|k,v| [k,k]} %></p></td>
-          <td><img id="image_preveiw" src="" style="width:108px;height:100px;"></td>
-          <td><p><%= f.submit :submit %></p></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <form >
+    <%= form_for @feed  do |f| %>
+      
+      <div class="panel panel-info">
+        <div class="panel-heading">New Post</div>
+        <div class="panel-body">
+          <label for="post" class="col-sm-2 col-form-label"> Post</label> 
+          <div class="col-sm-10">
+            <%= f.text_area :body, class: "form-control form-control-sm"%>
+          </div>
+      
+          <label for="post" class="col-sm-2 col-form-label" >permission</label> 
+          <div class="col-sm-10">
+            <%= f.select(:permission, Feed.permissions.map {|k,v| [k,k]}, {}, {class: "form-control", id: "exampleSelect1"}) %>
+          </div>
+
+          <label for="select" class="col-sm-2 col-form-label" class="custom-file">select</label>
+          <div class="col-sm-10">
+            <%= f.file_field :image, class: "custom-file-input" %>
+          </div> 
+
+          <label for="image" class="col-sm-12 col-form-label">image</label>
+            <div class="col-sm-12">
+              <img id="image_preveiw" src="" style="width:108px;height:100px;">  
+            </div>      
+          </div>
+      </div>
+      <%= f.submit "Create" %>  
+    <%end%>
+  </form>
 </div>
-<% end %>
-          
-          
 
+            
 
-  
+     
+        
 
+      
 
-  
+     
 
+      
 
+     
 
-  
+      
+      
 
-
-
-  

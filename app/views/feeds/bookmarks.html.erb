@@ -1,14 +1,18 @@
 <div class="container">
-  <h1> bookmark feeds </h1>
-  <div class="row" >
-    <div class="col-sm-3"><h2>image</h2></div>
-    <div class="col-sm-3"><h2>post</h2></div> 
-    <div class="col-sm-3"><h2>permission</h2></div>
-    <div class="col-sm-3"><h2>bookmark</h2></div>
-  </div>     
-  <%= render partial: 'bookmarks' %>
-  <%= will_paginate @feeds %>
+  <div class="panel panel-info">
+    <%@feeds.each do |feed| %>
+      <div class="panel-body">
+        <div class="col-sm-4"><%= image_tag feed.image_url(), class: "img" unless feed.image.blank? %></div>
+        <div class="col-sm-4"><%= feed.body %></div>
+        <div class="col-sm-4"><%= check_box_tag 'bookmark', 'yes', feed.bookmark %></div>
+      </div>
+    <%end%>
+  </div>
 </div>
+  <%= will_paginate @feeds %>
+   
+      
+
 
     
   

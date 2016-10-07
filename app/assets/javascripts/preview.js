@@ -23,11 +23,12 @@ $(document).on('click', '#bookmark_checkbox', function() {
     data: {  bookmark: $(this).is(':checked') }
   });
 });
+    
   
   
-
-
-
+// $( document ).ready(function() {
+//   $('#toggle-one').bootstrapToggle();
+// });
   
 
   

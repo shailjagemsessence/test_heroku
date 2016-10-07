@@ -1,0 +1,12 @@
+<%@feeds.each do |feed| %>
+  <div class="panel panel-info">
+    <div class="panel-body">
+      <div class="col-sm-4"><%= image_tag feed.image_url(), class: "img" unless feed.image.blank? %></div>
+      <div class="col-sm-4"><%= feed.body %></div>
+      <div class="col-sm-4" id="<%= feed.id %>"><%= check_box_tag 'bookmark', feed.bookmark,feed.bookmark,  id: "bookmark_checkbox" %></div>  
+     
+    </div>
+  </div>
+<%end%>
+      
+      

@@ -9,13 +9,10 @@ class FeedsController < ApplicationController
     @feed = Feed.new
   end
 
-  def show
-       # binding.pry
-    @feed = current_user.feeds.find(params[:id])
-  end
+  
 
   def create
-    # binding.pry
+       # binding.pry
     @feed = current_user.feeds.build(feed_params)
     if @feed.save!
       redirect_to feeds_path
@@ -24,10 +21,16 @@ class FeedsController < ApplicationController
       render :new
     end
   end
-
   def bookmarks
     @feeds = Feed.bookmark_records.paginate(:page => params[:page], :per_page => 10)
   end
+
+  def profile
+
+    @feed = current_user.first_name
+  end
+
+
     
   def bookmark_the_feed
     @feed = Feed.find(params[:id])
@@ -36,11 +39,14 @@ class FeedsController < ApplicationController
       format.html { redirect_to feeds_url }
     end
   end
+   
 private
   def feed_params
-    params.require(:feed).permit(:body, :image, :permission, :user_id, :bookmark)
+    params.require(:feed).permit(:body, :image, :permission, :user_id, :bookmark, :first_name, :last_name, :dob,:password)
   end
 end
+     
+
     
 
 
