@@ -13,24 +13,17 @@ $(document).on('change', '#feed_image', function() {
 }); 
 
 
-$(document).on('click', '#bookmark_checkbox', function() {
-  var $this = $(this),
-    checked,
-    feed_id = $this.closest("div").attr("id");
+$(document).on('change', '.bookmark_checkbox', function() {
+  checked =  $(this).prop('checked');
+  alert(checked);
+  var $this = $(this);
+    feed_id = $this.data("feed-id");
+    alert(feed_id);
     $.ajax({
     url: '/feeds/'+feed_id+'/bookmark_the_feed/',
     type: 'put',
-    data: {  bookmark: $(this).is(':checked') }
+    data: {  bookmark: checked }
   });
 });
-    
   
-  
-// $( document ).ready(function() {
-//   $('#toggle-one').bootstrapToggle();
-// });
-  
-
-  
-    
   

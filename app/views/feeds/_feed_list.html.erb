@@ -3,8 +3,10 @@
     <div class="panel-body">
       <div class="col-sm-4"><%= image_tag feed.image_url(), class: "img" unless feed.image.blank? %></div>
       <div class="col-sm-4"><%= feed.body %></div>
-      <div class="col-sm-4" id="<%= feed.id %>"><%= check_box_tag 'bookmark', feed.bookmark,feed.bookmark,  id: "bookmark_checkbox" %></div>  
-     
+
+      <div class="checkbox">
+        <%= check_box_tag 'bookmark', feed.bookmark,feed.bookmark,  "checked data-toggle": "toggle", class: 'bookmark_checkbox toggle', "data-feed-id": feed.id %>
+      </div> 
     </div>
   </div>
 <%end%>
