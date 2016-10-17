@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.integer :contact_no
       t.string  :password
       t.date    :dob
-
+      
       t.timestamps
     end
   end

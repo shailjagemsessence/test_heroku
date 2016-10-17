@@ -2,14 +2,21 @@
   <div class="panel panel-info">
     <%@feeds.each do |feed| %>
       <div class="panel-body">
-        <div class="col-sm-4"><%= image_tag feed.image_url(), class: "img" unless feed.image.blank? %></div>
-        <div class="col-sm-4"><%= feed.body %></div>
-        <div class="col-sm-4"><%= check_box_tag 'bookmark', 'yes', feed.bookmark %></div>
+        <div class="col-sm-4">
+          <%= image_tag feed.image_url(), class: "img" unless feed.image.blank? %>
+        </div>
+        <div class="col-sm-4">
+          <%= feed.body %>
+        </div>
+        <div class="col-sm-4">
+          <%= check_box_tag 'bookmark', 'yes' %>
+        </div>
       </div>
     <%end%>
   </div>
 </div>
-  <%= will_paginate @feeds %>
+
+<%= will_paginate @feeds %>
    
       
 

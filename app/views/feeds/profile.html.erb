@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-7 col-md-7">
+      <div class="well well-sm">
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <%= image_tag @result.image_url(), class: "img1" if !@result.image.blank? %> 
+          </div>
+          <div class="col-sm-6 col-md-8">
+            <h4> <%= @result.user.name.titleize %></h4>
+            <p>
+            <i class="glyphicon glyphicon-envelope"></i><%= @result.user.dob %>
+            <br />
+            <i class="glyphicon glyphicon-envelope"></i><%= @result.permission %>
+            <br />
+            <i class="glyphicon glyphicon-gift"></i><%= @result.body %></p>
+            <!-- <div class="btn-group">
+                <button type="button" class="btn btn-primary">
+                    Social</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span><span class="sr-only">Social</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
+                    <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Github</a></li>
+                </ul>
+            </div> -->
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+        
+            
+  
+           
+              
+
+
+
+

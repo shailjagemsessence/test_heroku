@@ -1,8 +1,0 @@
-<%@feeds.each do |feed| %>
-  <div class="row"> 
-    <div class="col-sm-3"><%= image_tag feed.image_url(), class: "img" unless feed.image.blank? %></div>
-    <div class="col-sm-3"><%= feed.body %></div>
-    <div class="col-sm-3"><%= feed.permission %></div>
-    <div class="col-sm-3"><%= check_box_tag 'bookmark', 'yes', feed.bookmark,disabled: true %></div>
-  </div>
-<%end%>
