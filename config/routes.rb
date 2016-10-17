@@ -1,15 +1,10 @@
 Rails.application.routes.draw do
   
-  # devise_for :users #do 
-  #    get :autocomplete_user_email, on: :collection
-  # end
+  devise_for :users
 
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # get 'welcome/index'
-  devise_for :users do
-    get '/users/sign_out' => 'devise/sessions#destroy'
-  end
   root 'welcome#index'
  
   resources :feeds do
@@ -18,17 +13,8 @@ Rails.application.routes.draw do
     get 'profile', on: :collection
     # autocomplete :user, :email, :full => true
   end 
-    
-  resources :friendships
-   
-
+  # sources :friendships
 end
-
- 
-
-
+    
   
-  
-
-
-  
+   

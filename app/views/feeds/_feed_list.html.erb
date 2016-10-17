@@ -7,7 +7,7 @@
         <%= check_box_tag 'bookmark', feed.bookmark,feed.bookmark,  "data-toggle": "toggle", "data-on": "Like", "data-off": "Unlike", "data-onstyle": "info", class: 'bookmark_checkbox toggle', "data-feed-id": feed.id %>
       </div> 
       
-      <%= link_to "Add Friend", friendships_path(:friend_id => current_user), :method => :post %>
+      <%#= link_to "Add Friend", friendships_path(:friend_id => current_user), :method => :post %>
     </div>
   </div>
 <%end%>
