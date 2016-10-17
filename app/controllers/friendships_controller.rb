@@ -1,11 +1,8 @@
 class FriendshipsController < ApplicationController
 
   
-    
-
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
-
     if @friendship.save
       flash[:notice] = "Added friend."
       redirect_to root_url
@@ -15,4 +12,7 @@ class FriendshipsController < ApplicationController
     end
   end
 end
+
+
+    
 
