@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :feeds
+  has_many :feeds, :dependent => :destroy
+ 
   has_many :friendships
   # has_many :friends, class_name: "User", foreign_key: 'friend_id'
   # belongs_to :user, class_name: "User"

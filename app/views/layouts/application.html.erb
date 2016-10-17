@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': true %>
   </head>
   <body>
+    <div class="sample">
     <ul class="nav nav-pills">
       <li role="presentation" class="active"><%= link_to 'project' %> </li>
       <li class="dropdown">
@@ -33,6 +34,7 @@
         <% end %>
       </ul>
     </ul>
+    </div>
   <div class="container">
     <div class="row">
      <div class="span9">
@@ -46,22 +48,4 @@
         <%= yield %>
   </body>
 </html>
-
-
-
-
-
-
-
-
-    
-   
-
-
-
-
-    
-
-
-
 

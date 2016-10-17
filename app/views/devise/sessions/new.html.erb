@@ -1,26 +1,73 @@
-<h2>Log in</h2>
+<!DOCTYPE html>
+  <html >
+    <head>
+      <meta charset="UTF-8">
+      <title>Trendy UI Kits - Login Form in Flat Design</title>
+      <link rel="stylesheet" href="css/style.css">
+    </head>
+      
+    <body>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>Sign In form</title>
+          <link rel="stylesheet" type="text/css" href="style.css">
+          <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        </head>
+      <body>
+      
+        <div id="main" class="container1">   
+        
+          <%= form_for resource, as: :resource_name, url: session_path(resource_name), html: { class: "wpl-track-me", id: "loginform" } do |f| %>
+          
+            <p class="login-username">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, class: "input", id: "user_login", placeholder: "Email Address" , size: "20" %>
+            </p> 
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+            <p class="login-password"> 
+              <%= f.label :password %><br />
+              <%= f.password_field :password, autocomplete: "off", class: "input", id: "user_pass", placeholder: "Password", size: "20" %>
+            </p>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+            <% if devise_mapping.rememberable? -%>
+              <p class="login-remember">
+                <%= f.check_box :remember_me, id: "rememberme" %>
+                <%= f.label :remember_me %>
+              </p>
+            <% end -%>  
+              
+            <p class="login-submit">
+              <%= f.submit "Log in", html: {id: "wp-submit", class: "button-primary"} %>
+              <%= render "devise/shared/links" %>
+            </p>  
+          <%end%> 
+        </div>
+      </body>
+    </html>
+  </body>
+</html>
+    
+    
+    
+    
+          
+                
+            
+        
+              
+  
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+      
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+    
+    
+    
 
-<%= render "devise/shared/links" %>
+    
+    
+
+    
+    
+    
+    
