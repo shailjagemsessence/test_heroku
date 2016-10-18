@@ -24,3 +24,32 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+<%= form_for(resource, as: :resource_name, url: session_path(resource_name), html: { class: "wpl-track-me", id: "loginform" }) do |f| %>
+
+  <center><h2 > Log_in Form</h2></center>
+
+  <p class="login-username">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, class: "input", placeholder: "Email Address" , size: "20" %>
+  </p> 
+
+
+  <p class="login-password"> 
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off", class: "input", id: "user_pass", placeholder: "Password", size: "20" %>
+  </p>
+
+  <% if devise_mapping.rememberable? -%>
+    <p class="login-remember">
+      <%= f.check_box :remember_me, id: "rememberme" %>
+      <%= f.label :remember_me %>
+    </p>
+  <% end -%>  
+    
+  <div class="login-submit">
+    <%= f.submit "Log in", html: {id: "wp-submit", class: "button-primary"} %>
+    <%= render "devise/shared/links" %>
+  </div>  
+<%end%> 
