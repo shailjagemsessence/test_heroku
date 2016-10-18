@@ -1,75 +1,51 @@
-<!DOCTYPE html>
-  <html >
-    <head>
-      <meta charset="UTF-8">
-      <title>Trendy UI Kits - Login Form in Flat Design</title>
-      <link rel="stylesheet" href="css/style.css">
-    </head>  
-    <body>
-      <html>
-        <head>
-          <meta charset="UTF-8">
-          <title>Sign In form</title>
-          <link rel="stylesheet" type="text/css" href="style.css">
-          <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        </head>
-      <body>
-        <div id="main" class="container1">   
-        
-          <%= form_for resource, as: :resource_name, url: registration_path(resource_name), html: { class: "wpl-track-me", id: "loginform1" } do |f| %>
-              <%= devise_error_messages! %>
-            
-            <center> <h2>Sign Up Form</h2> </center>
-            
-            <p class="login-username">
-              <%= f.label :first_name  %><br />
-              <%= f.text_field :first_name, autofocus: true, class: "input", id: "user_login", placeholder: "first_name" , size: "20" %>
-            </p> 
-            
-            <p class="login-username"> 
-              <%= f.label :last_name %><br />
-              <%= f.text_field :last_name, autofocus: true, class: "input", id: "user_login", placeholder: "last_name" , size: "20" %>
-            </p>
+<h2>Sign up</h2>
 
-            <p class="login-username"> 
-              <%= f.label :contact_no %><br />
-              <%= f.text_field :contact_no, autofocus: true,class: "input", id: "user_login", placeholder: "contact_no." , size: "20"  %> 
-            </p>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "wpl-track-me", id: "loginform1" }) do |f| %>
+  <%= devise_error_messages! %>
 
-            <p class="login-username">
-              <%= f.label :dob %><br />
-              <%= f.text_field :dob, autofocus: true, class: "input", id: "user_login", placeholder: "date_of_birth" , size: "20"  %> 
-            </p>
+  <center> <h2>Sign Up Form</h2> </center>
 
-            <p class="login-username">
-              <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, class: "input", id: "user_login", placeholder: "Email Address" , size: "20" %>
-            </p> 
+  <p class="login-username">
+    <%= f.label :first_name  %><br />
+    <%= f.text_field :first_name, autofocus: true, class: "input",  placeholder: "first_name" , size: "20" %>
+  </p> 
 
-            <p class="login-username">
-              <%= f.label :password%>
-              <%= f.password_field :password, autocomplete: "off", class: "input", id: "user_login", placeholder: "password" , size: "20" %>
-              <% if @minimum_password_length %>
-                <div class="hints"><h4>(<%= @minimum_password_length %> characters minimum)</h4></div>
-              <% end %><br />
-            </p>  
+  <p class="login-username"> 
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, class: "input",  placeholder: "last_name" , size: "20" %>
+  </p>
 
-            <p class="login-username">
-              <%= f.label :password_confirmation %><br />
-              <%= f.password_field :password_confirmation, autocomplete: "off", class: "input", id: "user_login", placeholder: "password_confirmation" , size: "20"  %> 
-            </p> 
+  <p class="login-username"> 
+    <%= f.label :contact_no %><br />
+    <%= f.text_field :contact_no, autofocus: true,class: "input", placeholder: "contact_no." , size: "20"  %> 
+  </p>
 
-            <div class="login-submit">
-              <%= f.submit "sign_up", html: {id: "wp-submit", class: "button-primary"} %>
-              <%= render "devise/shared/links" %>
-            </div> 
+  <p class="login-username">
+    <%= f.label :dob %><br />
+    <%= f.text_field :dob, autofocus: true, class: "input",  placeholder: "date_of_birth" , size: "20"  %> 
+  </p>
 
-     
-          <%end%> 
-        </div>
-      </body>
-    </html>
-  </body>
-</html>
-            
-        
+  <p class="login-username">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, class: "input", placeholder: "Email Address" , size: "20" %>
+  </p> 
+
+  <p class="login-username">
+    <%= f.label :password%>
+    <%= f.password_field :password, autocomplete: "off", class: "input", placeholder: "password" , size: "20" %>
+    <% if @minimum_password_length %>
+      <div class="hints"><h4>(<%= @minimum_password_length %> characters minimum)</h4></div>
+    <% end %><br />
+  </p>  
+
+  <p class="login-username">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "input", placeholder: "password_confirmation" , size: "20"  %> 
+  </p> 
+
+  <div class="login-submit">
+    <%= f.submit "sign_up" %>
+    <%= render "devise/shared/links" %>
+  </div> 
+
+<% end %>
