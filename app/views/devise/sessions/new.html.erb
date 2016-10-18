@@ -19,7 +19,7 @@
         <div id="main" class="container1">   
         
           <%= form_for resource, as: :resource_name, url: session_path(resource_name), html: { class: "wpl-track-me", id: "loginform" } do |f| %>
-          
+            <center><h2 > Log_in Form</h2></center>
             <p class="login-username">
               <%= f.label :email %><br />
               <%= f.email_field :email, autofocus: true, class: "input", id: "user_login", placeholder: "Email Address" , size: "20" %>
@@ -37,10 +37,10 @@
               </p>
             <% end -%>  
               
-            <p class="login-submit">
+            <div class="login-submit">
               <%= f.submit "Log in", html: {id: "wp-submit", class: "button-primary"} %>
               <%= render "devise/shared/links" %>
-            </p>  
+            </div>  
           <%end%> 
         </div>
       </body>
@@ -49,6 +49,8 @@
 </html>
     
     
+
+           
     
     
           

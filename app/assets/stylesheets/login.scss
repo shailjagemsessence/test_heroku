@@ -65,10 +65,19 @@ body {
     padding: 46px;
 }
 
+#loginform1 {  
+    background-color: #f7f7f7;
+    display: block;
+    height: 700px;
+    margin: -187px auto;
+    outline: solid 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    padding: 46px;
+}
 
 
 .login-username:before { 
-  content: "Login Form";
+  /*content: "Login Form";*/
   color: #4c4c4c; 
   font-size: 20px;
   text-transform: uppercase;
@@ -82,7 +91,7 @@ body {
 }
  
 .login-username .input{ 
-  margin-top: 15px;
+  margin-top: 11px;
  } 
 
 .login-password .input { margin-top: -14px;}
@@ -169,5 +178,15 @@ body {
 }
 .login-remember { 
   display: none;
+}
+
+.login-submit {
+  padding-top: 50px;
+}
+
+
+
+.hints{
+  padding-top: 15px;
 }
 
