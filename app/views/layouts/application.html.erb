@@ -9,41 +9,41 @@
   </head>
   <body>
     <div class="sample">
-    <ul class="nav nav-pills">
-      <li role="presentation" class="active"><%= link_to 'project' %> </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup ="true" aria-expanded="false">Feed<span class="caret"></span></a>
-        <ul class="dropdown-menu" >
-          <li><%= link_to 'new feed', new_feed_path %></li>
-          <li><%= link_to 'all feed', feeds_path %></li>
-        </ul>
-      </li>
-      <li role="presentation"><%= link_to 'Bookmark', bookmarks_feeds_path %></li>
-      <li role="presentation"><%= link_to 'profile',  profile_feeds_path %></li>
-      <ul class="nav navbar-nav navbar-right">
-      <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
-          <li role="presentation"><%= link_to 'Edit profile', edit_user_registration_path %></li> 
+      <ul class="nav nav-pills">
+        <li role="presentation" class="active"><%= link_to 'project' %> </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup ="true" aria-expanded="false">Feed<span class="caret"></span></a>
+          <ul class="dropdown-menu" >
+            <li><%= link_to 'new feed', new_feed_path %></li>
+            <li><%= link_to 'all feed', feeds_path %></li>
+          </ul>
+        </li>
+        <li role="presentation"><%= link_to 'Bookmark', bookmarks_feeds_path %></li>
+        <li role="presentation"><%= link_to 'profile',  profile_feeds_path %></li>
+        <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+            Logged in as <strong><%= current_user.email %></strong>.
+            <li role="presentation"><%= link_to 'Edit profile', edit_user_registration_path %></li> 
+        
+            <li role="presentation"><%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
+          <% else %>
+            <li role="presentation"><%= link_to "Sign up", new_user_registration_path %></li> 
       
-          <li role="presentation"><%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
-        <% else %>
-          <li role="presentation"><%= link_to "Sign up", new_user_registration_path %></li> 
-    
-          <li role="presentation"><%= link_to "Login", new_user_session_path%></li>
-          
-        <% end %>
+            <li role="presentation"><%= link_to "Login", new_user_session_path%></li>
+            
+          <% end %>
+        </ul>
       </ul>
-    </ul>
-    </div>
-  <div class="container">
-    <div class="row">
-     <div class="span9">
-        <p class="navbar-text pull-right">
-       
-        </p>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
       </div>
+    <div class="container">
+      <div class="row">
+       <div class="span9">
+          <p class="navbar-text pull-right">
+         
+          </p>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        </div>
     </div>
         <%= yield %>
   </body>
