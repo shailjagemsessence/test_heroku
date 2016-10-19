@@ -1,5 +1,6 @@
 <div class="form_login">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "wpl-track-me", id: "loginform" }) do |f| %>
+    <center> <h2>Log in Form</h2> </center>
     <p class="login-username">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, class: "input", placeholder: "Email Address" , size: "20" %>
