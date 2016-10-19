@@ -7,9 +7,9 @@ class User < ApplicationRecord
   has_many :feeds, :dependent => :destroy
  
   has_many :friendships
+  has_many :friends, :through => :friendships
   # has_many :friends, class_name: "User", foreign_key: 'friend_id'
   # belongs_to :user, class_name: "User"
-  has_many :friends, :through => :friendships
 
   def name
     "#{self.first_name} #{self.last_name}"
@@ -23,7 +23,7 @@ class User < ApplicationRecord
       user.image = auth.info.image # assuming the user model has an image
     end
   end
-   def self.new_with_session(params, session)
+  def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?

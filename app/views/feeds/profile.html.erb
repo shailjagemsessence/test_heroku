@@ -28,13 +28,22 @@
                     <li><a href="#">Github</a></li>
                 </ul>
             </div> -->
-            
+            <i class="glyphicon glyphicon-gift"></i><%= link_to "Find Friends", feeds_path %></p>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <h2>Your Friends</h2>
+  <ul>
+
+  <%@feeds.each do |feed| %>
+    <li><%= feed.current_user.friends%></li>
+  <%end%>
+  
+  </ul>
 </div>
+            
         
         
             
