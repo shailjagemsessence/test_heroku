@@ -1,11 +1,10 @@
 class FeedsController < ApplicationController
   before_filter :authenticate_user!
   # autocomplete :user, :email, :full => true
+
   def index
     @feeds = Feed.by_permission
   end 
-    
-  
   def new
     @feed = Feed.new
     @user = User.new
@@ -28,43 +27,16 @@ class FeedsController < ApplicationController
   def profile
     # binding.pry
     @result = current_user.feeds.try(:last)
+    @friends = current_user.friendships
   end
-
+    
   def bookmark_the_feed
     @feed = Feed.find(params[:id])
     @feed.update_attributes(bookmark: params[:bookmark])
   end
-
 private
   def feed_params
     params.require(:feed).permit(:body, :image, :permission, :user_id, :bookmark, :first_name, :last_name, :dob,:password)
   end
 end
-  
-  
-  
-
-
-
-
-
     
-    
-   
-     
-
-    
-
-
-      
-    
-      
-    
-    
-    
-
-  
-
-
-
-     

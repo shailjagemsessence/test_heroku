@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     get 'profile', on: :collection
     # autocomplete :user, :email, :full => true
   end 
-  # get 'auth/facebook/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
+  #get 'auth/facebook/callback', to: 'sessions#create'
+  # get 'auth/failure', to: redirect('/')
   # devise_scope :user do
   #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
