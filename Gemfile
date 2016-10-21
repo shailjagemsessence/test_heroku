@@ -40,6 +40,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'bootstrap-toggle-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'sprockets', '3.6.3'
 
 
 group :development, :test do

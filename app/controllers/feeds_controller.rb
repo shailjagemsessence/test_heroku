@@ -1,13 +1,17 @@
 class FeedsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   # autocomplete :user, :email, :full => true
 
   def index
     @feeds = Feed.by_permission
   end 
+
   def new
-    @feed = Feed.new
-    @user = User.new
+     @feed = Feed.new
+     @user = User.new
+    # @user = User.new
+    # @user.feeds.build
+    # @user.bookmarks_table.build
   end
 
   def create
@@ -34,9 +38,11 @@ class FeedsController < ApplicationController
     @feed = Feed.find(params[:id])
     @feed.update_attributes(bookmark: params[:bookmark])
   end
+
 private
   def feed_params
     params.require(:feed).permit(:body, :image, :permission, :user_id, :bookmark, :first_name, :last_name, :dob,:password)
   end
+
 end
     

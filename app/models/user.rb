@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
   has_many :feeds, :dependent => :destroy
- 
+  
   has_many :friendships
   has_many :friends, :through => :friendships
+  
   # has_many :friends, class_name: "User", foreign_key: 'friend_id'
   # belongs_to :user, class_name: "User"
 
