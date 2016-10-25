@@ -4,14 +4,16 @@
       <div class="col-sm-4"><%= image_tag feed.image_url(), class: "img" unless feed.image.blank? %></div>
       <div class="col-sm-4"><%= feed.body %></div>
       <div class="checkbox">
-        <%= check_box_tag 'bookmark', feed.bookmark,feed.bookmark,  "data-toggle": "toggle", "data-on": "Like", "data-off": "Unlike", "data-onstyle": "info", class: 'bookmark_checkbox toggle', "data-feed-id": feed.id %>
+        <input type="checkbox" checked data-toggle="toggle" id='bookmark_checkbox' data-id="<%=feed.id%>" >
+
+        <%#= check_box_tag 'bookmark', "data-toggle": "toggle", "data-on": "like", "data-off": "unlike", "data-onstyle": "info", class: 'bookmark_checkbox toggle', "data-feed-id": feed.id %>
       </div> 
-      <%= link_to "Add Friend", friendships_path(friend_id: feed.user_id), :method => :post %>
     </div>
   </div>
 <%end%>
       
         
+      
 
         
          

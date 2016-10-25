@@ -1,0 +1,19 @@
+<h1> all feeds </h1>
+<div class="container">
+  <div id="feedlist" > 
+    <%@users.each do |user| %>
+      <div class="panel panel-info">
+        <div class="panel-body">
+          <div class="col-sm-4"><%= image_tag user.feed.image_url(), class: "img" unless feed.image.blank? %></div>
+          <div class="col-sm-4"><%= feed.body %></div>
+          <div class="checkbox">
+            <input type="checkbox" checked data-toggle="toggle" id='bookmark_checkbox' data-id="<%=feed.id%>" >
+
+            <%#= check_box_tag 'bookmark', "data-toggle": "toggle", "data-on": "like", "data-off": "unlike", "data-onstyle": "info", class: 'bookmark_checkbox toggle', "data-feed-id": feed.id %>
+          </div> 
+          <%= link_to "Add Friend", friendships_path(friend_id: feed.user_id), :method => :post %>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>

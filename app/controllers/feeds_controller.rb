@@ -9,10 +9,8 @@ class FeedsController < ApplicationController
   def new
      @feed = Feed.new
      @user = User.new
-    # @user = User.new
-    # @user.feeds.build
-    # @user.bookmarks_table.build
   end
+   
 
   def create
     @feed = current_user.feeds.build(feed_params)
@@ -24,9 +22,9 @@ class FeedsController < ApplicationController
     end
   end
     
-  def bookmarks
-    @feeds = Feed.bookmark_records.paginate(:page => params[:page], :per_page => 10)
-  end
+  # def bookmarks
+  #   @feeds = Feed.bookmark_records.paginate(:page => params[:page], :per_page => 10)
+  # end
 
   def profile
     # binding.pry
@@ -34,15 +32,15 @@ class FeedsController < ApplicationController
     @friends = current_user.friendships
   end
     
-  def bookmark_the_feed
-    @feed = Feed.find(params[:id])
-    @feed.update_attributes(bookmark: params[:bookmark])
-  end
+  # def bookmark_the_feed
+  #   @feed = Feed.find(params[:id])
+  #   @feed.update_attributes(bookmark: params[:bookmark])
+  # end
 
 private
   def feed_params
     params.require(:feed).permit(:body, :image, :permission, :user_id, :bookmark, :first_name, :last_name, :dob,:password)
   end
-
+  
 end
     

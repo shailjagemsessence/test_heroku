@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019105516) do
+ActiveRecord::Schema.define(version: 20161021113257) do
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "feed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "mark_as"
+  end
 
   create_table "feeds", force: :cascade do |t|
     t.binary   "image"
@@ -19,7 +27,6 @@ ActiveRecord::Schema.define(version: 20161019105516) do
     t.integer  "permission"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean  "bookmark"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -55,5 +62,4 @@ ActiveRecord::Schema.define(version: 20161019105516) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
 end

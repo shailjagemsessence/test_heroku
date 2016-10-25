@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
  
   resources :feeds do
-    get 'bookmarks', on: :collection
-    put 'bookmark_the_feed', on: :member
+    # get 'bookmarks', on: :collection
+    # put 'bookmark_the_feed', on: :member
     get 'profile', on: :collection
     # autocomplete :user, :email, :full => true
   end 
@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
   resources :friendships
+  resources :bookmarks
 end
   

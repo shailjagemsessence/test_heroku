@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="panel panel-info">
+    <%@bookmarks.each do |bookmark| %>
+      <div class="panel-body">
+        <div class="col-sm-4">
+          <%= image_tag bookmark.feed.image_url(), class: "img" unless bookmark.feed.image.blank? %>
+        </div>
+        <div class="col-sm-4">
+          <%= bookmark.feed.body %>
+        </div>
+        <div class="col-sm-4">
+          <%= check_box_tag 'bookmark', 'yes' %>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
