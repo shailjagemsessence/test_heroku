@@ -1,4 +1,5 @@
 function readURL(input) {
+  
   if (input.files && input.files[0]) {
     var reader = new FileReader();       
     reader.onload = function (e) {
@@ -11,6 +12,11 @@ function readURL(input) {
 $(document).on('change', '#feed_image', function() {
   readURL(this);
 }); 
+
+$(document).on('change', '#user_image', function() {
+  readURL(this);
+}); 
+
   
 $(document).on('change', '#bookmark_checkbox', function() {
     checked =  $(this).prop('checked');
