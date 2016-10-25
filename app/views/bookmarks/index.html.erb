@@ -2,16 +2,18 @@
   <div class="panel panel-info">
     <%@bookmarks.each do |bookmark| %>
       <div class="panel-body">
-        <div class="col-sm-4">
-          <%= image_tag bookmark.feed.image_url(), class: "img" unless bookmark.feed.image.blank? %>
+        <div class="col-sm-6">
+          <% if bookmark.feed.image.blank? %>
+            <%= image_tag "/uploads/default/default1.jpg", class: "img"   %>
+          <% else %>
+            <%= image_tag bookmark.feed.image_url(), class: "img"  %>
+          <%end%>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <%= bookmark.feed.body %>
-        </div>
-        <div class="col-sm-4">
-          <%= check_box_tag 'bookmark', 'yes' %>
         </div>
       </div>
     <%end%>
   </div>
 </div>
+          

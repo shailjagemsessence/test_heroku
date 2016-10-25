@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :bookmarks
   has_many :friendships
   has_many :friends, :through => :friendships
+  mount_uploader :image, AvatarUploader
+  
   
   # has_many :friends, class_name: "User", foreign_key: 'friend_id'
   # belongs_to :user, class_name: "User"

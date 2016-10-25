@@ -11,9 +11,10 @@ class FeedsController < ApplicationController
      @user = User.new
   end
    
-
   def create
     @feed = current_user.feeds.build(feed_params)
+    # binding.pry
+    # @feed.pictures.build()
     if @feed.save!
       redirect_to feeds_path
       flash[:notice] = "Successfully submitted details!"
@@ -39,8 +40,9 @@ class FeedsController < ApplicationController
 
 private
   def feed_params
-    params.require(:feed).permit(:body, :image, :permission, :user_id, :bookmark, :first_name, :last_name, :dob,:password)
+    params.require(:feed).permit(:body, :permission, :user_id,:image, :bookmark, :first_name, :last_name, :dob,:password)
   end
-  
 end
+  
+
     

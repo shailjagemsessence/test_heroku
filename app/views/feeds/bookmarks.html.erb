@@ -2,9 +2,11 @@
   <div class="panel panel-info">
     <%@feeds.each do |feed| %>
       <div class="panel-body">
-        <div class="col-sm-4">
-          <%= image_tag feed.image_url(), class: "img" unless feed.image.blank? %>
-        </div>
+        <% if feed.image.blank? %>
+          <div class="col-sm-4"><%= image_tag "/uploads/default/default1.jpg", class: "img" %></div>
+        <% else %>
+          <div class="col-sm-4"><%= image_tag feed.image_url(), class: "img"   %></div>
+        <%end%>
         <div class="col-sm-4">
           <%= feed.body %>
         </div>
