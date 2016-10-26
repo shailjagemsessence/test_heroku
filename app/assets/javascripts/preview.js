@@ -28,7 +28,25 @@ $(document).on('change', '#bookmark_checkbox', function() {
       data: { feed_id: feed_id , mark_as: checked } 
     });
   });
-       
+
+
+$(document).on('click', '#myId', function(){
+        debugger
+        removeClass('hidden');
+    });
+});
+
+
+$(function() {
+  $('a#show_whatever').click(function(event){
+    event.preventDefault();
+    $('div#whatever').toggle();
+  });
+});   
+
+
+
+
 
 // $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
 //   return $(this).datepicker;

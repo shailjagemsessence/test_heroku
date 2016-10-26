@@ -4,26 +4,33 @@
       <div class="well well-sm">
         <div class="row">
           <div class="col-sm-6 col-md-4">
-            <%= image_tag @result.image_url(), class: "img1" if !@result.image.blank? %> 
+            <% if @result.image.blank? %>
+              <%= image_tag "/uploads/default/default2.png", class: "img2"  %>
+            <% else %>
+              <%= image_tag @result.image_url(), class: "img2"  %>
+            <%end%>
           </div>
-          <div class="col-sm-6 col-md-8">
-            <h4> <%= @result.user.name.titleize %></h4>
+          <div class="col-sm-10 col-md-8">
+            <i class="glyphicon glyphicon-envelope namefont"><h4><b><%= @result.name.titleize %></b></h4></i>
             <p>
-            <i class="glyphicon glyphicon-envelope"></i><%= @result.user.dob %>
+            <i class="glyphicon glyphicon-envelope"><%= @result.dob %></i>
             <br />
-            <i class="glyphicon glyphicon-envelope"></i><%= @result.user.email %>
+            <i class="glyphicon glyphicon-envelope"><%= @result.email %></i>
             <br />
-            <i class="glyphicon glyphicon-gift"></i><%= @result.body %></p>
-            <i class="glyphicon glyphicon-gift"></i><%#= link_to "Find Friends", friendships_path %></p>
+            <i class="glyphicon glyphicon-gift"></i><%#= @result.body %></p>
+            <i class="glyphicon glyphicon-gift"></i><%= link_to "Find Friends", friendships_path %></p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <h2>Your Friends</h2>
-  <%@friends.each do |friend| %>
-    friend.friend
+  
+  <% @result1.each do |result|%>
+    <%= result.friend.name %>
   <%end%>
 </div>
+    
+
+ 
             
 

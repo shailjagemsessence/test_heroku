@@ -10,6 +10,7 @@ class FeedsController < ApplicationController
      @feed = Feed.new
      @user = User.new
   end
+  
    
   def create
     @feed = current_user.feeds.build(feed_params)
@@ -28,21 +29,14 @@ class FeedsController < ApplicationController
   # end
 
   def profile
-    # binding.pry
-    @result = current_user.feeds.try(:last)
-    @friends = current_user.friendships
+    @result  = current_user
+    @result1 = current_user.friendships
   end
-    
-  # def bookmark_the_feed
-  #   @feed = Feed.find(params[:id])
-  #   @feed.update_attributes(bookmark: params[:bookmark])
-  # end
-
+   
 private
   def feed_params
     params.require(:feed).permit(:body, :permission, :user_id,:image, :bookmark, :first_name, :last_name, :dob,:password)
   end
 end
-  
-
     
+  
