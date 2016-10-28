@@ -12,7 +12,7 @@
             <%end%>
           </div>
           <div class="col-sm-4"><%= user.name.titleize %></div>
-          <%= link_to "Add Friend", friendships_path(friend_id: user.id), :method => :post, id: "show_whatever" %>
+          <%= link_to " Friend request ", friendships_path(friend_id: user.id, status: Friendship.statuses[:request_send]), :method => :post %>
         </div>
       </div>
     <%end%>

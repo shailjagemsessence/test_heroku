@@ -9,19 +9,24 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, :through => :friendships
   mount_uploader :image, AvatarUploader
-  # scope :show_friend, -> {joins(:friendships).where.not("users.id IN (?)", "friend_ids").distinct}
-  # scope :show_friend, -> {User.where.not("users.id IN (?)", friend_ids)}
-  
-  # has_many :friends, class_name: "User", foreign_key: 'friend_id'
-  # belongs_to :user, class_name: "User"
 
   def get_user
-    # User.joins(:friendships).where.not(self.get_user).where.not("users.id IN (?)", "friend_ids").distinct
+    # binding.pry
+  friend_ids = self.friendships.map(&:friend_id).uniq
+    if friend_ids.blank? 
+      a = User.where.not("id = ?", self.id)
+    else
+      User.where.not("id IN (?) ", friend_ids )
+    end
   end
-  
+
+  def show_user
+    Friendship.joins(:user).where("friend_id = ? AND status = ?", self.id, 'request_send')
+  end
   def name
     "#{self.first_name} #{self.last_name}"
   end
+  
 
   def self.from_omniauth(auth)
     
@@ -41,6 +46,14 @@ class User < ApplicationRecord
     end
   end
 end
+      
+    
+      
+   
+        
+      
+    
+
 
   
 

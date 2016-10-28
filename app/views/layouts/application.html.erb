@@ -19,7 +19,7 @@
           </ul>
         </li>
         <li role="presentation"><%= link_to 'Bookmark', bookmarks_path %></li>
-        <li role="presentation"><%= link_to 'profile',  profile_feeds_path %></li>
+        <li role="presentation"><%= link_to 'profile',  profile_path %></li>
         <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
             Logged in as <strong><%= current_user.email %></strong>.

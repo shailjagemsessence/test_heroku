@@ -1,7 +1,6 @@
 class FeedsController < ApplicationController
   before_action :authenticate_user!
   # autocomplete :user, :email, :full => true
-
   def index
     @feeds = Feed.by_permission
   end 
@@ -14,8 +13,6 @@ class FeedsController < ApplicationController
    
   def create
     @feed = current_user.feeds.build(feed_params)
-    # binding.pry
-    # @feed.pictures.build()
     if @feed.save!
       redirect_to feeds_path
       flash[:notice] = "Successfully submitted details!"
@@ -23,20 +20,35 @@ class FeedsController < ApplicationController
       render :new
     end
   end
-    
+  
   # def bookmarks
   #   @feeds = Feed.bookmark_records.paginate(:page => params[:page], :per_page => 10)
   # end
 
   def profile
-    @result  = current_user
-    @result1 = current_user.friendships
+    @user = current_user
+    @friends = current_user.show_user
   end
+
+  def update
+  @feed = Feed.find(params[:id])
+  if @feed.update_attributes(feed_params)
+    flash[:success] = "feed updated"
+      redirect_to @feed
+    else
+      render 'edit'
+    end
+  end
+
+  def edit
+  end
+    
    
 private
   def feed_params
-    params.require(:feed).permit(:body, :permission, :user_id,:image, :bookmark, :first_name, :last_name, :dob,:password)
+    params.require(:feed).permit(:body, :permission, :user_id,:image, :bookmark, :first_name, :last_name, :dob,:password,:status)
   end
 end
+
     
   

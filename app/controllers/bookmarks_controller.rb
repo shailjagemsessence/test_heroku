@@ -1,7 +1,7 @@
 class BookmarksController < ApplicationController
 
   def index
-    @bookmarks = current_user.bookmarks.all.paginate(:page => params[:page], :per_page => 10)
+    @bookmarks = current_user.bookmarks.all.uniq.paginate(:page => params[:page], :per_page => 10)
   end
 
   def create

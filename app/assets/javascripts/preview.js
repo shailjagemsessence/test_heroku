@@ -30,13 +30,6 @@ $(document).on('change', '#bookmark_checkbox', function() {
   });
 
 
-$(document).on('click', '#myId', function(){
-        debugger
-        removeClass('hidden');
-    });
-});
-
-
 $(function() {
   $('a#show_whatever').click(function(event){
     event.preventDefault();

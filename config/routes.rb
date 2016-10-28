@@ -7,12 +7,8 @@ Rails.application.routes.draw do
   # get 'welcome/index'
   root 'welcome#index'
  
-  resources :feeds do
-    # get 'bookmarks', on: :collection
-    # put 'bookmark_the_feed', on: :member
-    get 'profile', on: :collection
-    # autocomplete :user, :email, :full => true
-  end 
+  resources :feeds
+  get 'profile' => "feeds#profile"
   #get 'auth/facebook/callback', to: 'sessions#create'
   # get 'auth/failure', to: redirect('/')
   # devise_scope :user do
