@@ -6,12 +6,10 @@ class FriendshipsController < ApplicationController
   end
 
   def index
-    # @users = User.all
     @users = current_user.get_user
   end
 
   def update
-    # binding.pry
     @friendship = Friendship.find(params[:id])
     if @friendship.update(status: params[:status])
       flash[:success] = " updated"
@@ -22,6 +20,12 @@ class FriendshipsController < ApplicationController
   end
       
   def edit
+  end
+
+  def destroy
+     @friendship = Friendship.find(params[:id])
+     @friendship.destroy
+     redirect_to :back
   end
     
     

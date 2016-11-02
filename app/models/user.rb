@@ -9,24 +9,39 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, :through => :friendships
   mount_uploader :image, AvatarUploader
+  
 
   def get_user
-    # binding.pry
   friend_ids = self.friendships.map(&:friend_id).uniq
     if friend_ids.blank? 
-      a = User.where.not("id = ?", self.id)
+      User.where.not("id = ?", self.id)
     else
-      User.where.not("id IN (?) ", friend_ids )
+      friend_ids << self.id
+      User.where.not("id IN (?) ", friend_ids)
     end
   end
-
+      
+  def self.search(search)
+    if search
+      self.where("email like ?", "%#{search}%")
+    else
+      self.all
+    end
+  end
+      
   def show_user
     Friendship.joins(:user).where("friend_id = ? AND status = ?", self.id, 'request_send')
   end
+
+  def friend_list
+    Friendship.joins(:user).where("friend_id = ? AND status = ?", self.id, 'accept')
+  end
+       
   def name
     "#{self.first_name} #{self.last_name}"
   end
-  
+
+
 
   def self.from_omniauth(auth)
     
@@ -46,6 +61,7 @@ class User < ApplicationRecord
     end
   end
 end
+
       
     
       

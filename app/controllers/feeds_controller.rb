@@ -27,8 +27,12 @@ class FeedsController < ApplicationController
 
   def profile
     @user = current_user
-    @friends = current_user.show_user
+    @friendships = current_user.show_user
+    @friendlist = current_user.friend_list
+    @user_email = User.search(params[:search])
   end
+  
+   
 
   def update
   @feed = Feed.find(params[:id])
