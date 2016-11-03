@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   # get 'welcome/index'
   root 'welcome#index'
  
-  resources :feeds
+  resources :feeds 
+  post :send_request_mail, to: 'feeds#send_request_mail', as: :send_request_mail
+  # get 'autocomplete_user_email' => "feeds#autocomplete_user_email"
+
   get 'profile' => "feeds#profile"
   #get 'auth/facebook/callback', to: 'sessions#create'
   # get 'auth/failure', to: redirect('/')

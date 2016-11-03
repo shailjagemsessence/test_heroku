@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # def send_request_mail
+  #   @user = User.all
+  # end
+
   protected
 
   def configure_permitted_parameters

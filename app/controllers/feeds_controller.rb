@@ -24,16 +24,27 @@ class FeedsController < ApplicationController
   # def bookmarks
   #   @feeds = Feed.bookmark_records.paginate(:page => params[:page], :per_page => 10)
   # end
-
+  
   def profile
     @user = current_user
     @friendships = current_user.show_user
     @friendlist = current_user.friend_list
-    @user_email = User.search(params[:search])
   end
-  
+    
+  def send_request_mail
+    # binding.pry
+    @sender = current_user
+    @receiver = User.search_by_email(params[:email]).first
+    if @receiver.present?
+    @friendship = @sender.friendships.build(friend_id: @receiver.id, status: 'request_send')
+      if @friendship.save
+        ApplicationMailer.send_email_for_friend_request( @sender, @receiver).deliver 
+        flash.now[:success] = "mail_sent"
+        redirect_to :back
+      end
+    end
+  end
    
-
   def update
   @feed = Feed.find(params[:id])
   if @feed.update_attributes(feed_params)
@@ -53,6 +64,13 @@ private
     params.require(:feed).permit(:body, :permission, :user_id,:image, :bookmark, :first_name, :last_name, :dob,:password,:status)
   end
 end
+
+  
+  
+
+
+   
+
 
     
   

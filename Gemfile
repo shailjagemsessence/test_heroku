@@ -42,6 +42,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'sprockets', '3.6.3'
 gem 'bootstrap-datepicker-rails'
+gem "jquery-ui-rails"
 
 
 group :development, :test do

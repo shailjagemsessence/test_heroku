@@ -18,7 +18,7 @@
             <i class="glyphicon glyphicon-envelope"><%= @user.email %></i>
             <br />
             <i class="glyphicon glyphicon-gift"></i><%#= @user.body %></p>
-            <i class="glyphicon glyphicon-gift"></i><%= link_to "Find Friends", friendships_path %></p>
+            <i class="glyphicon glyphicon-gift"></i><%= link_to "Invite friends", friendships_path %></p>
           </div>
         </div>
       </div>
@@ -78,13 +78,28 @@
       </div>
     </div>
   </div>
-  <%= form_tag  profile_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Send request", :name => nil %>
-  </p>
-<% end %>
 </div>
+  <div class="col-sm-6 col-md-5">
+  <%= form_tag (send_request_mail_path) do %>
+    <%= text_field_tag 'email'  %>
+    <%= submit_tag "Send request"%>
+  <% end %>
+  </div>
+  
+   
+ 
+  
+  
+ 
+  <%#= form_tag ()  %>
+    <%#= f.text_field :email, autofocus: true, autocomplete: "on",  placeholder: "Email" %>
+    <%#= link_to "Send request ", send_request_mail_path %>
+  <%#end%>
+  <%#= form_for Feed.new do |f| %>
+    <%#= f.autocomplete_field :email, autocomplete_user_email_path %>
+  <%# end %>
+  <%#= search_field_tag 'email' %>
+
 
 
 
