@@ -15,12 +15,11 @@ class FriendshipsController < ApplicationController
       flash[:success] = " updated"
       redirect_to :back
     else
-      render 'edit'
+      render 'new'
     end
   end
       
-  def edit
-  end
+  
 
   def destroy
      @friendship = Friendship.find(params[:id])

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Hi <%= @receiver.name %></h3>
+    <p>
+      <%= @sender.name %>
+      <%#= update_friendship_url(@receiver, :host => "localhost:3000")  %>
+      <p>
+      has send the friend request
+    </p>
+  </body>
+</html>
