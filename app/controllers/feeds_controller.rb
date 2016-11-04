@@ -32,18 +32,19 @@ class FeedsController < ApplicationController
   end
     
   def send_request_mail
-    # binding.pry
     @sender = current_user
     @receiver = User.search_by_email(params[:email]).first if params[:email].present?
-    if @receiver.present?
+    friend = Friendship.check_firend_request(@sender,@receiver).first
+    if @receiver.present? and @sender.id != @receiver.id and !friend.present?
       @friendship = @sender.friendships.build(friend_id: @receiver.id, status: 'request_send')
       if @friendship.save
         ApplicationMailer.send_email_for_friend_request( @sender, @receiver).deliver 
-        flash.now[:success] = "mail_sent"
+        flash[:notice] = "request sent succesfully!" 
         redirect_to :back
       end
     else
-      flash[:notice] = "unvalid email!" 
+      flash[:notice] = "invalid email!" 
+      redirect_to profile_path
     end
   end
    

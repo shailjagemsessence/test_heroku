@@ -71,6 +71,9 @@
                 <div class="col-sm-6 col-md-3">
                   <%= friendlist.user.name %><br>
                 </div>
+                <div class="col-sm-6 col-md-3">
+                  <%= button_to "unfriend", friendship_path(id: friendlist.id, status: Friendship.statuses[:reject]),  :method => :delete  %>
+                </div>
               </div>
             </div>
           <%end%>
@@ -82,7 +85,7 @@
   <div class="col-sm-6 col-md-5">
   <%= form_tag (send_request_mail_path) do %>
     <%= text_field_tag 'email'  %>
-    <%= submit_tag "Send request"%>
+    <%= submit_tag "Search to invite"%>
   <% end %>
   </div>
   
