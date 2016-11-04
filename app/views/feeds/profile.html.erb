@@ -1,4 +1,25 @@
 <div class="container">
+  <nav class="navbar ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "people you may know?", friendships_path , class: "navbar-brand" %>
+      </div>
+      <div class="navbar-form navbar-right">
+        <%= form_tag (send_request_mail_path) do %>
+          <%= text_field_tag 'email'  %>
+          <%= submit_tag "Search to invite"%>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+          
+    
+      
   <div class="row">
     <div class="col-xs-12 col-sm-7 col-md-7">
       <div class="well well-sm">
@@ -18,7 +39,7 @@
             <i class="glyphicon glyphicon-envelope"><%= @user.email %></i>
             <br />
             <i class="glyphicon glyphicon-gift"></i><%#= @user.body %></p>
-            <i class="glyphicon glyphicon-gift"></i><%= link_to "Invite friends", friendships_path %></p>
+            <i class="glyphicon glyphicon-gift"></i><%#= link_to "people you may know?", friendships_path %></p>
           </div>
         </div>
       </div>
@@ -82,12 +103,7 @@
     </div>
   </div>
 </div>
-  <div class="col-sm-6 col-md-5">
-  <%= form_tag (send_request_mail_path) do %>
-    <%= text_field_tag 'email'  %>
-    <%= submit_tag "Search to invite"%>
-  <% end %>
-  </div>
+
   
    
  

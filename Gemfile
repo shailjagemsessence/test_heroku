@@ -26,7 +26,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
-gem 'devise'
+gem 'devise',      '> 4.x'
+
 gem 'pry'
 
 gem 'coffee-rails', '~> 4.2'
@@ -43,7 +44,8 @@ gem 'omniauth-facebook'
 gem 'sprockets', '3.6.3'
 gem 'bootstrap-datepicker-rails'
 gem "jquery-ui-rails"
-
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'activeadmin', github: 'activeadmin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
