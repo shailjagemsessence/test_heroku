@@ -27,19 +27,30 @@ $(document).on('change', '#bookmark_checkbox', function() {
       type: 'post',
       data: { feed_id: feed_id , mark_as: checked } 
     });
-  });
+});
+  
+
+$(document).on('change', '#remove_bookmark', function() {
+  debugger
+    checked = $(this).is(':checked');
+    var $this = $(this),
+      feed_id = $this.data("id");
+    $.ajax({
+      url: '/bookmarks', 
+      type: 'post',
+      data: { feed_id: feed_id , mark_as: checked } 
+    });
+});
+   
+    
 
 
-$(function() {
-  $('a#show_whatever').click(function(event){
-    event.preventDefault();
-    $('div#whatever').toggle();
-  });
-});   
-
-
-
-
+// $(function() {
+//   $('a#show_whatever').click(function(event){
+//     event.preventDefault();
+//     $('div#whatever').toggle();
+//   });
+// });   
 
 // $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
 //   return $(this).datepicker;
@@ -48,4 +59,3 @@ $(function() {
 // ({
 //   format: "dd-mm-yyyy"
 // });
-

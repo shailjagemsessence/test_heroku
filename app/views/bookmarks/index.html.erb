@@ -1,20 +1,31 @@
 <div class="container">
-  <div class="panel panel-info">
-    <%@bookmarks.each do |bookmark| %>
+  <h1> Bookmark Feeds </h1>
+  
+  <%@bookmarks.each do |bookmark| %>
+    <div class="panel panel-info">
       <div class="panel-body">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <% if bookmark.feed.image.blank? %>
             <%= image_tag "/uploads/default/default1.jpg", class: "img"   %>
           <% else %>
             <%= image_tag bookmark.feed.image_url(), class: "img"  %>
           <%end%>
+          <%= bookmark.feed.user.name %>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <%= bookmark.feed.body %>
         </div>
+        <div class="col-sm-4">
+          <%= button_to 'Remove', bookmark_path(bookmark.id),
+             :method => :delete %>
+        </div>
       </div>
-    <%end%>
-  </div>
+    </div>
+  <%end%>
 </div>
           
 <%= will_paginate @bookmarks %>
+
+
+
+        

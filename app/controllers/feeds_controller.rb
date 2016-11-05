@@ -5,6 +5,7 @@ class FeedsController < ApplicationController
     @feeds = Feed.by_permission
   end 
 
+
   def new
      @feed = Feed.new
      @user = User.new
@@ -31,6 +32,7 @@ class FeedsController < ApplicationController
     @friendlist = current_user.friend_list
   end
     
+  #move to friendship controller.
   def send_request_mail
     @sender = current_user
     @receiver = User.search_by_email(params[:email]).first if params[:email].present?

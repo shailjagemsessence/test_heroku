@@ -1,6 +1,7 @@
 class Bookmark < ApplicationRecord
   belongs_to :user
   belongs_to :feed
-  validates_uniqueness_of :feed_id
+  scope :remove_bookmarks, -> {where(mark_as: true).order('updated_at DESC')}
 end
+  
  
