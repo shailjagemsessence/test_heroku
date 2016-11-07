@@ -29,7 +29,11 @@ class User < ApplicationRecord
   def friend_list
     Friendship.joins(:user).where("friend_id = ? AND status = ?", self.id, 'accept')
   end
-       
+
+  def follow_list
+    follow_list = Friendship.joins(:user).where("user_id = ? AND status = ?", self.id, 'request_send')
+  end
+    
   def name
     "#{self.first_name} #{self.last_name}"
   end
@@ -59,27 +63,6 @@ class User < ApplicationRecord
 end
   
     
+       
       
 
-      
-    
-      
-   
-        
-      
-    
-
-
-  
-
-
-  
-
-  
-
-
-  
-  
-  
- 
-  

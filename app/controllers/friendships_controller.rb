@@ -18,8 +18,6 @@ class FriendshipsController < ApplicationController
       render 'new'
     end
   end
-      
-  
 
   def destroy
      @friendship = Friendship.find(params[:id])
@@ -38,6 +36,10 @@ class FriendshipsController < ApplicationController
     redirect_to :back
   end
 end
+  
+      
+  
+
       
     
     

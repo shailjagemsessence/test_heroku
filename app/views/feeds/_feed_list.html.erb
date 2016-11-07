@@ -1,13 +1,14 @@
 <%@feeds.each do |feed| %>
   <div class="panel panel-info">
     <div class="panel-body">
-      
-      <% if feed.image.blank? %>
-        <div class="col-sm-4"><%= image_tag "/uploads/default/default1.jpg", class: "img"   %></div>
-      <% else %>
-        <div class="col-sm-4"><%= image_tag feed.image_url(), class: "img"   %></div>
-      <%end%>
-
+      <div class="col-sm-4">
+        <% if feed.image.blank? %>
+          <%= image_tag "/uploads/default/default1.jpg", class: "img"   %>
+        <% else %>
+          <%= image_tag feed.image_url(), class: "img"   %>
+        <%end%>
+        <%= feed.user.name%>
+      </div>
       <div class="col-sm-4"><%= feed.body %></div>
       <div class="checkbox">
         <input type="checkbox" unchecked data-toggle="toggle" data-on = "bookmark" data-off = "unmark", id='bookmark_checkbox' data-id="<%=feed.id%>" >

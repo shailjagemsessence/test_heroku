@@ -4,6 +4,7 @@ class FeedsController < ApplicationController
   def index
     @feeds = Feed.by_permission
   end 
+    
 
 
   def new
@@ -30,12 +31,15 @@ class FeedsController < ApplicationController
     @user = current_user
     @friendships = current_user.show_user
     @friendlist = current_user.friend_list
+    @follows = current_user.follow_list
   end
     
+  
   #move to friendship controller.
   def send_request_mail
     @sender = current_user
     @receiver = User.search_by_email(params[:email]).first if params[:email].present?
+    # binding.pry
     friend = Friendship.check_firend_request(@sender,@receiver).first
     if @receiver.present? and @sender.id != @receiver.id and !friend.present?
       @friendship = @sender.friendships.build(friend_id: @receiver.id, status: 'request_send')
@@ -70,12 +74,4 @@ private
   end
 end
 
-  
-  
-
-
-   
-
-
-    
-  
+ 

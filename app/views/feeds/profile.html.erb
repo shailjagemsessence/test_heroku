@@ -45,6 +45,7 @@
       </div>
     </div>
   </div>
+  
   <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"> friend request</button>
   <div class="row collapse" id="demo">
     <div class="col-xs-12 col-sm-7 col-md-7">
@@ -102,6 +103,33 @@
       </div>
     </div>
   </div>
-</div>
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kemo"> follow</button>
+  <div class="row collapse" id="kemo">
+  <div class="col-xs-12 col-sm-7 col-md-7">
+    <div class="well well-sm">
+      <div class="row">
+        <% @follows.each do |follows|%> 
 
-  
+          <div class="panel panel-info">
+            <div class="panel-body">
+              <div class="col-sm-6 col-md-5">
+                <% if follows.friend.image.blank? %>
+                  <%= image_tag "/uploads/default/default2.png", class: "img"  %>
+                <% else %>
+                  <%= image_tag follows.friend.image_url(), class: "img"  %>
+                <%end%>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <%= follows.friend.name %><br>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <%= button_to "unfollow", friendship_path(id: follows.id, status: Friendship.statuses[:reject]),  :method => :delete  %>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+       
