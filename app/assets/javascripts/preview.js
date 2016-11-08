@@ -48,19 +48,26 @@ $(document).on('change', '#bookmark_checkbox', function() {
 
 
 
+$(document).on('change', '#bookmark_checkbox', function() {
+
+  // alert("The checkbox with the ID '" + this.id + "' changed");
+  // var checkboxValues = JSON.parse(localStorage.getItem('bookmark_checkbox')) || {};
+  // alert(checkboxValues);
+});
+
 
 
  
   
 
 
-//var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {};
-// var $checkboxes = $("#bookmark_checkbox");
+var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {};
+var $checkboxes = $("#bookmark_checkbox");
 
-// $checkboxes.on("change", function(){
-//   $checkboxes.each(function(){
-//     checkboxValues[this.id] = this.checked;
-//   });
-//   localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
-// });
+$checkboxes.on("change", function(){
+  $checkboxes.each(function(){
+    checkboxValues[this.id] = this.checked;
+  });
+  localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+});
    

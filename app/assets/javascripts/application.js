@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-
+// require rails.validations
 // require jquery-ui
 // require autocomplete-rails
 //= require bootstrap-datepicker

@@ -19,12 +19,12 @@ class User < ApplicationRecord
   validates_format_of :first_name, with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/
   validate :is_valid_dob?
 
-  private
-  def is_valid_dob?
-    if((dob.is_a?(Date) rescue ArgumentError) == ArgumentError)
-      errors.add(:dob, 'Sorry, Invalid Date of Birth Entered.')
-    end
-  end
+  # private
+  # def is_valid_dob?
+  #   if((dob.is_a?(Date) rescue ArgumentError) == ArgumentError)
+  #     errors.add(:dob, 'Sorry, Invalid Date of Birth Entered.')
+  #   end
+  # end
 
 
   
@@ -60,7 +60,7 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name   # assuming the user model has a name
+      # user.name = auth.info.name   # assuming the user model has a name
       # user.image = auth.info.image # assuming the user model has an image
     end
   end
