@@ -11,8 +11,10 @@
       </div>
       <div class="col-sm-4"><%= feed.body %></div>
       <div class="checkbox">
-        <input type="checkbox" unchecked data-toggle="toggle" data-on = "bookmark" data-off = "unmark", id='bookmark_checkbox' data-id="<%=feed.id%>" onclick="toggleOn()" onclick="toggleOff()" >
+         <input type="checkbox" unchecked data-toggle="toggle" data-on = "bookmark" data-off = "unmark", id='bookmark_checkbox' data-id="<%=feed.id%>" onclick="toggleOn()" onclick="toggleOff()" > 
+        <%#= check_box_tag :mark_as, 1, feed.bookmarks.where(user_id: current_user.id) %>
         <%#= check_box_tag 'bookmark', "data-toggle": "toggle", "data-on": "like", "data-off": "unlike", "data-onstyle": "info", class: 'bookmark_checkbox toggle', "data-feed-id": feed.id %>
+        <%#= check_box_tag 'bookmark', feed.bookmark,feed.bookmark,  "checked data-toggle": "toggle", class: 'bookmark_checkbox toggle', "data-feed-id": feed.id %>
       </div> 
     </div>
   </div>

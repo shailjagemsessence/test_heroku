@@ -13,7 +13,21 @@ class User < ApplicationRecord
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   mount_uploader :image, AvatarUploader
   scope :search_by_email, -> (email) {where("email like ?", "%#{email}%")}
+  validates :contact_no,   :presence => {:message => 'invalid phone number!'},
+                            :numericality => true,
+                            :length => { :minimum => 10, :maximum => 15 }
+  validates_format_of :first_name, with: /\A[a-zA-Z]+(?: [a-zA-Z]+)?\z/
+  validate :is_valid_dob?
 
+  private
+  def is_valid_dob?
+    if((dob.is_a?(Date) rescue ArgumentError) == ArgumentError)
+      errors.add(:dob, 'Sorry, Invalid Date of Birth Entered.')
+    end
+  end
+
+
+  
   def get_user
   friend_ids = self.friendships.map(&:friend_id).uniq
     if friend_ids.blank? 

@@ -20,6 +20,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
+    # binding.pry
      @friendship = Friendship.find(params[:id])
      @friendship.destroy
      redirect_to :back

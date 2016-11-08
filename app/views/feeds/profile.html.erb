@@ -88,7 +88,7 @@
       <div class="well well-sm">
         <div class="row">
         <%if @friendlist.present? %>
-           <% for friendship in @user.friendships %>
+          <% for friendship in @user.friendships %>
           <%# @user_friend.each do |friendship| %>
             <div class="panel panel-info">
               <div class="panel-body">
@@ -103,7 +103,8 @@
                   <%= friendship.friend.name %><br>
                 </div>
                 <div class="col-sm-6 col-md-3">
-                  <%= button_to "unfriend", friendship_path(id: friendship.id, status: Friendship.statuses[:reject]),  :method => :delete  %>
+                  <%= link_to "remove", friendship, :method => :delete %>
+                  <%#= button_to "unfriend", friendship_path(id: friendship, status: Friendship.statuses[:reject]),  :method => :delete  %>
                 </div>
               </div>
             </div>
@@ -124,7 +125,9 @@
                   <%= user.name %><br>
                 </div>
                 <div class="col-sm-6 col-md-3">
-                  <%= button_to "unfriend", friendship_path(id: user.id, status: Friendship.statuses[:reject]),  :method => :delete  %>
+                  <%#= link_to "remove", user, :method => :delete %>
+                  <%#= button_to "unfriend", friendship_path(id: user.id, status: Friendship.statuses[:reject]),  :method => :delete  %>
+                  
                 </div>
               </div>
             </div>

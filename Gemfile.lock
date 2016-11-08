@@ -83,6 +83,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    client_side_validations (3.2.8)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -277,6 +278,7 @@ DEPENDENCIES
   bootstrap-toggle-rails
   byebug
   carrierwave (>= 1.0.0.beta, < 2.0)
+  client_side_validations
   coffee-rails (~> 4.2)
   devise (> 4.x)
   inherited_resources!

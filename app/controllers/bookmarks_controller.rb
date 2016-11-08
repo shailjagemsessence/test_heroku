@@ -6,19 +6,14 @@ class BookmarksController < ApplicationController
   end
   
   def create
-    # binding.pry
-    # if !current_user.bookmarks.active(params[:feed_id]).present?
-    # unless current_user.bookmarks.present? and Bookmark.active(params[:feed_id]).present?
-
-      # render nothing: true
-    # else
-      @bookmark = current_user.bookmarks.build(feed_id: params[:feed_id], mark_as: params[:mark_as])
-      if @bookmark.save
-        render nothing: true
-      end 
-    # end
-     
+   
+    @bookmark = current_user.bookmarks.build(feed_id: params[:feed_id], mark_as: params[:mark_as])
+    if @bookmark.save
+      render nothing: true
+    end 
   end
+    
+     
 
   def edit
     binding.pry

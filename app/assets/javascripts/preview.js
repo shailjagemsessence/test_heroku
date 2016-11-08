@@ -21,6 +21,7 @@ $(document).on('change', '#user_image', function() {
 $(document).on('change', '#bookmark_checkbox', function() {
 
   if($(this).prop("checked") == true){
+    
     checked =  $(this).prop('checked');
     var $this = $(this),
       feed_id = $this.data("id");
@@ -29,9 +30,8 @@ $(document).on('change', '#bookmark_checkbox', function() {
       type: 'post',
       data: { feed_id: feed_id , mark_as: checked } 
     });
-    function toggleOn() {
-      $('#bookmark_checkbox').bootstrapToggle('on')
-    }
+    
+    
   }
   else{
     unchecked =  $(this).prop('checked');
@@ -46,20 +46,21 @@ $(document).on('change', '#bookmark_checkbox', function() {
 
 });
 
+
+
+
+
+ 
   
 
-// $(document).on('change', '#remove_bookmark', function() {
-//   debugger
-//     checked = $(this).is(':checked');
-//     var $this = $(this),
-//       feed_id = $this.data("id");
-//     $.ajax({
-//       url: '/bookmarks', 
-//       type: 'post',
-//       data: { feed_id: feed_id , mark_as: checked } 
-//     });
+
+//var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {};
+// var $checkboxes = $("#bookmark_checkbox");
+
+// $checkboxes.on("change", function(){
+//   $checkboxes.each(function(){
+//     checkboxValues[this.id] = this.checked;
+//   });
+//   localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
 // });
    
-
-
-

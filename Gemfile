@@ -46,6 +46,7 @@ gem 'bootstrap-datepicker-rails'
 gem "jquery-ui-rails"
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin', github: 'activeadmin'
+gem 'client_side_validations'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
