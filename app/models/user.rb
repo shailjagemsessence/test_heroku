@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :bookmarks
   has_many :friendships
   has_many :friends, :through => :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   mount_uploader :image, AvatarUploader
   scope :search_by_email, -> (email) {where("email like ?", "%#{email}%")}
 
@@ -27,18 +29,17 @@ class User < ApplicationRecord
   end
 
   def friend_list
-    Friendship.joins(:user).where("friend_id = ? AND status = ?", self.id, 'accept')
+    Friendship.joins(:user).where("status = ?",  'accept')
   end
+ 
 
   def follow_list
-    follow_list = Friendship.joins(:user).where("user_id = ? AND status = ?", self.id, 'request_send')
+    follow_list = Friendship.joins(:user).where("user_id = ? AND status = ?", self.id, 'request_send').uniq
   end
     
   def name
     "#{self.first_name} #{self.last_name}"
   end
-
-
 
   def self.from_omniauth(auth)
 
@@ -61,8 +62,4 @@ class User < ApplicationRecord
     end
   end
 end
-  
-    
-       
-      
 

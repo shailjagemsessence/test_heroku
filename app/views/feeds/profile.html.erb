@@ -45,8 +45,15 @@
       </div>
     </div>
   </div>
+
+   <ul class="nav nav-tabs">
+    <li class="active"><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"> friend request</button></li>
+    <li><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#remo"> friend list</button></li>
+    <li><button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kemo"> follow</button></li>
+  </ul>
+    
   
-  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo"> friend request</button>
+  
   <div class="row collapse" id="demo">
     <div class="col-xs-12 col-sm-7 col-md-7">
       <div class="well well-sm">
@@ -75,35 +82,59 @@
         </div>
       </div>
     </div>
-    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#remo"> friend list</button>
+    
     <div class="row collapse" id="remo">
     <div class="col-xs-12 col-sm-7 col-md-7">
       <div class="well well-sm">
         <div class="row">
-          <% @friendlist.each do |friendlist|%> 
+        <%if @friendlist.present? %>
+           <% for friendship in @user.friendships %>
+          <%# @user_friend.each do |friendship| %>
             <div class="panel panel-info">
               <div class="panel-body">
                 <div class="col-sm-6 col-md-5">
-                  <% if friendlist.user.image.blank? %>
+                  <% if friendship.friend.image.blank? %>
                     <%= image_tag "/uploads/default/default2.png", class: "img"  %>
                   <% else %>
-                    <%= image_tag friendlist.user.image_url(), class: "img"  %>
+                    <%= image_tag friendship.friend.image_url(), class: "img"  %>
                   <%end%>
                 </div>
                 <div class="col-sm-6 col-md-3">
-                  <%= friendlist.user.name %><br>
+                  <%= friendship.friend.name %><br>
                 </div>
                 <div class="col-sm-6 col-md-3">
-                  <%= button_to "unfriend", friendship_path(id: friendlist.id, status: Friendship.statuses[:reject]),  :method => :delete  %>
+                  <%= button_to "unfriend", friendship_path(id: friendship.id, status: Friendship.statuses[:reject]),  :method => :delete  %>
                 </div>
               </div>
             </div>
           <%end%>
+
+          <% for user in @user.inverse_friends %>
+          <%# @user_invers_friend.each do |ifriend|  %>
+            <div class="panel panel-info">
+              <div class="panel-body">
+                <div class="col-sm-6 col-md-5">
+                  <% if user.image.blank? %>
+                    <%= image_tag "/uploads/default/default2.png", class: "img"  %>
+                  <% else %>
+                    <%= image_tag user.image_url(), class: "img"  %>
+                  <%end%>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <%= user.name %><br>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <%= button_to "unfriend", friendship_path(id: user.id, status: Friendship.statuses[:reject]),  :method => :delete  %>
+                </div>
+              </div>
+            </div>
+          <%end%>
+        <%end%>
         </div>
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kemo"> follow</button>
+  
   <div class="row collapse" id="kemo">
   <div class="col-xs-12 col-sm-7 col-md-7">
     <div class="well well-sm">
@@ -133,3 +164,4 @@
   </div>
 </div>
        
+        

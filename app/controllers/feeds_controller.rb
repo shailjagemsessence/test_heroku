@@ -5,8 +5,6 @@ class FeedsController < ApplicationController
     @feeds = Feed.by_permission
   end 
     
-
-
   def new
      @feed = Feed.new
      @user = User.new
@@ -31,8 +29,15 @@ class FeedsController < ApplicationController
     @user = current_user
     @friendships = current_user.show_user
     @friendlist = current_user.friend_list
+    # binding.pry
+    if @friendlist.present?
+      @user_friend = @friendlist.first.user
+      @user_invers_friend = @friendlist.first.user.inverse_friends
+    end
     @follows = current_user.follow_list
   end
+    
+    
     
   
   #move to friendship controller.
@@ -73,5 +78,7 @@ private
     params.require(:feed).permit(:body, :permission, :user_id,:image, :bookmark, :first_name, :last_name, :dob,:password,:status)
   end
 end
+
+
 
  

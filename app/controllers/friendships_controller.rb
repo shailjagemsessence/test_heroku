@@ -24,8 +24,7 @@ class FriendshipsController < ApplicationController
      @friendship.destroy
      redirect_to :back
   end
-    
-    
+      
   def create
     @friendship = current_user.friendships.build(friend_id: params[:friend_id], status: params[:status])
     if @friendship.save
@@ -41,6 +40,8 @@ end
   
 
       
+    
+    
     
     
       
