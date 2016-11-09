@@ -21,32 +21,22 @@ class FeedsController < ApplicationController
     end
   end
   
-  # def bookmarks
-  #   @feeds = Feed.bookmark_records.paginate(:page => params[:page], :per_page => 10)
-  # end
-  
   def profile
     @user = current_user
     @friendships = current_user.show_user
-    @friendlist = current_user.friend_list
     # binding.pry
-    if @friendlist.present?
-      @user_friend = @friendlist.first.user
-      @user_invers_friend = @friendlist.first.user.inverse_friends
-    end
+    @friendlist = current_user.friend_list
     @follows = current_user.follow_list
   end
     
-    
-    
-  
+   
   #move to friendship controller.
   def send_request_mail
     @sender = current_user
     @receiver = User.search_by_email(params[:email]).first if params[:email].present?
-    # binding.pry
     friend = Friendship.check_firend_request(@sender,@receiver).first
-    if @receiver.present? and @sender.id != @receiver.id and !friend.present?
+    friendlist = Friendship.check_firendlist_request(@sender,@receiver).first
+    if @receiver.present? and @sender.id != @receiver.id and !friend.present? and !friendlist.present?
       @friendship = @sender.friendships.build(friend_id: @receiver.id, status: 'request_send')
       if @friendship.save
         ApplicationMailer.send_email_for_friend_request( @sender, @receiver).deliver 
@@ -58,7 +48,7 @@ class FeedsController < ApplicationController
       redirect_to profile_path
     end
   end
-   
+    
   def update
   @feed = Feed.find(params[:id])
   if @feed.update_attributes(feed_params)
@@ -78,6 +68,7 @@ private
     params.require(:feed).permit(:body, :permission, :user_id,:image, :bookmark, :first_name, :last_name, :dob,:password,:status)
   end
 end
+   
 
 
 

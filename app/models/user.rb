@@ -26,8 +26,6 @@ class User < ApplicationRecord
   #   end
   # end
 
-
-  
   def get_user
   friend_ids = self.friendships.map(&:friend_id).uniq
     if friend_ids.blank? 
@@ -43,10 +41,8 @@ class User < ApplicationRecord
   end
 
   def friend_list
-    Friendship.joins(:user).where("status = ?",  'accept')
+    self.friendships.where(" status = ?",   'accept')
   end
- 
-
   def follow_list
     follow_list = Friendship.joins(:user).where("user_id = ? AND status = ?", self.id, 'request_send').uniq
   end
@@ -64,11 +60,8 @@ class User < ApplicationRecord
       # user.image = auth.info.image # assuming the user model has an image
     end
   end
-
-  
-
+ 
   def self.new_with_session(params, session)
-      # binding.pry
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
@@ -76,4 +69,14 @@ class User < ApplicationRecord
     end
   end
 end
+      
+
+  
+
+
+  
+
+
+    
+    
 
